@@ -1,5 +1,5 @@
 ## Release info
 
-### GeodACad 2.2.2
+### Geo7 Tools 
 
-This is precursor of Geo7 working with AutoCAD 2000 - 2004. User interface and documentation developed in polish language.
+Geo7 Tools for AutoCAD 2010 - 2012. User interface and documentation developed in polish language.
