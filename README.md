@@ -12,3 +12,7 @@ Tools for AutoCAD and BricsCAD
 ### Downlad and install
 * [Download Geo7](https://github.com/kubaszostak/Geo7/releases)
 * [Run Geo7 at BricsCAD startup](https://github.com/kubaszostak/Geo7/issues/9)
+
+---
+* [Wsparcie](http://geo7.userecho.com/)
+* [Nowości](http://geo7.userecho.com/topics/22-nowa-wersja-geo7/direction-down/)
