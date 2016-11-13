@@ -13,7 +13,7 @@ namespace Geo7.Tools
     {
         public BlockFindCommand()
         {
-            this.DisplayName = AcConsts.FindBlock;
+            this.DisplayName = AppServices.Strings.FindBlock;
             //this.SmallImage = Resources.Find;
         }
 
@@ -24,7 +24,7 @@ namespace Geo7.Tools
             // use constructor with Guid so that we can save/load user data
             if (palletteSet == null)
             {
-                palletteSet = new PaletteSet(AcConsts.FindBlock);
+                palletteSet = new PaletteSet(AppServices.Strings.FindBlock);
                 //palletteSet.MinimumSize = new System.Drawing.Size(300, 300);
                 //ToolsPalettes.Size = new System.Drawing.Size(300, 500);
                 //ToolsPalettes.Style = PaletteSetStyles.ShowTabForSingle | PaletteSetStyles.ShowAutoHideButton | PaletteSetStyles.ShowCloseButton;

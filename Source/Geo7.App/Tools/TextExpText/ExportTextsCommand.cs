@@ -11,20 +11,22 @@ namespace Geo7.Tools
     {
         public TextExpTextCommand()
         {
-            this.DisplayName = AcConsts.ExportTexts;
-            this.Description = AcConsts.ExportTextsDsc;
+            this.DisplayName = AppServices.Strings.ExportTexts;
+            this.Description = AppServices.Strings.ExportTextsDsc;
             //this.SmallImage = Geo7.Properties.Resources.ExportTxt;
         }
 
         protected override void ExecuteCore()
         {
-            var storage = AppServices.SaveFileDialog.ShowTextLinesWritersDialog(Ac.GetLastFileName("points"));
+            var dlg = AppServices.SaveFileDialog;
+            var storage = dlg.ShowTextLinesWritersDialog(Ac.GetLastFileName("points"));
             if (storage == null)
                 return;
 
 
             using (storage)
             {
+                Ac.SetLastFileName("points", dlg.FilePath);
                 using (var lTrans = Ac.StartTransaction())
                 {
                     var allTexts = lTrans.GetAllEntities<DBText>().Where(ent => ent.Visible).Where(ent => !ent.TextString.IsEmpty());

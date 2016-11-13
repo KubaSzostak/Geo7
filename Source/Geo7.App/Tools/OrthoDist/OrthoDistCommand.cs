@@ -23,6 +23,8 @@ namespace Geo7.Tools
 {
 	public class OrthoDistCommand : AcCommand
     {
+
+
 		double TextHeight = 1.0;
 		OrthoTextPos TextPos = OrthoTextPos.Auto;
 		Line2d BaseLine = new Line2d();
@@ -50,13 +52,13 @@ namespace Geo7.Tools
 
 		private bool GetBaseLine()
 		{
-			PromptPointResult ptRes = Ac.Editor.GetPoint("\r\n" + AcConsts.EnterStartPoint);
+			PromptPointResult ptRes = Ac.Editor.GetPoint("\r\n" + AppServices.Strings.EnterStartPoint);
 			if (ptRes.Status != PromptStatus.OK)
 				return false;
 
 			var startPt = ptRes.Value;
 
-			PromptPointOptions epPrtOpts = new PromptPointOptions("\r\n" + AcConsts.EnterEndPoint);
+			PromptPointOptions epPrtOpts = new PromptPointOptions("\r\n" + AppServices.Strings.EnterEndPoint);
 			epPrtOpts.UseBasePoint = true;
 			epPrtOpts.UseDashedLine = true;
 			epPrtOpts.BasePoint = startPt;
@@ -75,7 +77,7 @@ namespace Geo7.Tools
 			if (this.TextHeight <= 0.0)
 				this.TextHeight = 1.0;
 
-			var opts = new PromptDistanceOptions(AcConsts.EnterTextHeight);
+			var opts = new PromptDistanceOptions(AppServices.Strings.EnterTextHeight);
 			opts.DefaultValue = this.TextHeight;
 			opts.Only2d = true;
 			opts.UseDashedLine = true;
@@ -93,7 +95,8 @@ namespace Geo7.Tools
 		{
 			this.TextPos = TextToPos(Ac.GetValue("OrthoDist.TextPos"));
 
-			var opts = new PromptKeywordOptions(AcConsts.EnterTextPosition);
+            // http://help.autodesk.com/view/ACD/2016/ENU/?guid=GUID-DF40DD82-FD27-43C5-B7D2-E75646B2E47E
+            var opts = new PromptKeywordOptions(AppServices.Strings.EnterTextPosition);
 			opts.Keywords.Add("Left");
 			opts.Keywords.Add("Right");
 			//opts.Keywords.Default = this.TextPos.ToString();
@@ -123,7 +126,7 @@ namespace Geo7.Tools
 
 		private bool AddOrthoDist()
 		{
-			var res = Ac.Editor.GetPoint(AcConsts.EnterPoint);
+			var res = Ac.Editor.GetPoint(AppServices.Strings.EnterPoint);
 			if (res.Status != PromptStatus.OK)
 				return false;
 			var pt = res.Value.Convert2d();

@@ -70,12 +70,12 @@ namespace Geo7.Tools
 			InitBlockName();
 			do
 			{
-				PromptPointResult ptRes = Ac.Editor.GetPoint("\r\n" + AcConsts.EnterInsertionPoint);
+				PromptPointResult ptRes = Ac.Editor.GetPoint("\r\n" + AppServices.Strings.EnterInsertionPoint);
 				if (ptRes.Status != PromptStatus.OK)
 					return;
 				Point3d insPnt = ptRes.Value;
 
-				PromptStringOptions idOpt = new PromptStringOptions("\r\n" + AcConsts.EnterPointId);
+				PromptStringOptions idOpt = new PromptStringOptions("\r\n" + AppServices.Strings.EnterPointId);
 				idOpt.DefaultValue = pointId;
 				idOpt.UseDefaultValue = true;
 				idOpt.AllowSpaces = false;
@@ -98,7 +98,7 @@ namespace Geo7.Tools
 			if (!string.IsNullOrEmpty(BlockName))
 				return;
 
-			PromptStringOptions bnOpt = new PromptStringOptions("\r\n" + AcConsts.EnterBlockName );
+			PromptStringOptions bnOpt = new PromptStringOptions("\r\n" + AppServices.Strings.EnterBlockName );
 			bnOpt.DefaultValue = LastBlockName;
 			bnOpt.UseDefaultValue = true;
 			bnOpt.AllowSpaces = false;

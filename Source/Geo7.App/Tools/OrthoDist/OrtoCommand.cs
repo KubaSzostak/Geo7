@@ -14,8 +14,8 @@ namespace Geo7.Tools
     {
         public OrtoCommand()
         {
-            this.DisplayName = AcConsts.Orto;
-            this.Description = AcConsts.OrtoDsc;
+            this.DisplayName = AppServices.Strings.Orto;
+            this.Description = AppServices.Strings.OrtoDsc;
             //this.SmallImage = Resources.Orto;
         }
 

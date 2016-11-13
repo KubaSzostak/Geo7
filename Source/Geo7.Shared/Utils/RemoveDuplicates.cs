@@ -51,7 +51,7 @@ namespace System
             BuildEntitiesDict(entities);
 
             if (showProgress)
-                Ac.InitProgress(AcConsts.DeletingDuplicates, entities.Count());
+                Ac.InitProgress(AppServices.Strings.DeletingDuplicates, entities.Count());
 
             foreach (var kv in EntitiesDict)
             {
@@ -93,8 +93,8 @@ namespace System
                 var polygons = polylines.Where(p => p.Closed == true).ToList();
                 var polygonsByLength = polygons.ToLookup(p => p.Length.ToString(Ac.LinearPrecisionFormat));
 
-                Ac.InitProgress(AcConsts.DeletingDuplicates, polygonsByLength.Count);
-                Ac.WriteLn(AcConsts.DeletingDuplicates);
+                Ac.InitProgress(AppServices.Strings.DeletingDuplicates, polygonsByLength.Count);
+                Ac.WriteLn(AppServices.Strings.DeletingDuplicates);
 
                 foreach (var polygonsWithLength in polygonsByLength)
                 {

@@ -502,6 +502,7 @@ namespace System
             if (string.IsNullOrEmpty(res))
             {                    
                 res = System.IO.Path.ChangeExtension(Ac.Db.Filename, "");
+                res = res.TrimEnd('.');
             }
             return res;
         }
@@ -510,53 +511,7 @@ namespace System
         {
             Ac.SetValue("FileDialog." + filter, value);
         }
-
-        private static void InitFileDlgOptions(PromptFileOptions opt, string filter)
-        {
-            var filePath = GetLastFileName(filter);
-            opt.InitialDirectory = IO.Path.GetDirectoryName(filePath);
-            opt.InitialFileName = IO.Path.GetFileNameWithoutExtension(filePath);
-            opt.Filter = filter;
-        }
         
-
-        public static SelectionFilter GetSelectBlocksFilter(params string[] blockNames)
-        {
-            List<string> blockList = new List<string>(blockNames);
-            TypedValue[] values = new TypedValue[]
-            {                
-                GetTypedValue(DxfCode.Start, "INSERT" ),
-                GetTypedValue(DxfCode.BlockName, blockList.Join(",") )
-            };
-            return new SelectionFilter(values);
-        }
-
-        public static AcObjectIds SelectBlocks(params string[]  blockNames)
-        {
-            //PromptEntityOptions peo = new PromptEntityOptions("Select blocks: ");
-            //var res = Editor.GetEntity(peo);
-
-            var res = new AcObjectIds();
-
-            var filter = GetSelectBlocksFilter(blockNames);
-            PromptSelectionOptions promptOpt = new PromptSelectionOptions();
-            promptOpt.MessageForAdding = "Select blocks:";
-
-            PromptSelectionResult selRes = Ac.Editor.GetSelection(promptOpt, filter);
-            if (selRes.Status == PromptStatus.OK)
-                res.AddItems(selRes.Value.GetObjectIds());
-            return res;
-        }
-
-        public static AcObjectIds SelectAllBlocks(string blockName)
-        {
-            var res = new AcObjectIds();
-            var filter = GetSelectBlocksFilter(blockName);
-            var selRes = Ac.Editor.SelectAll(filter);
-            if (selRes.Status == PromptStatus.OK)
-                res.AddItems(selRes.Value.GetObjectIds());
-            return res;
-        }
 
         public static string GetValidName(string name)
         {

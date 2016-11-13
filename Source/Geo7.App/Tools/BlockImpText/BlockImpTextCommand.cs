@@ -15,12 +15,14 @@ namespace Geo7.Tools
     {
         protected override void ExecuteCore()
         {
-            var storage = AppServices.OpenFileDialog.ShowTextLinesReadersDialog(Ac.GetLastFileName("points"));
+            var dlg = AppServices.OpenFileDialog;
+            var storage = dlg.ShowTextLinesReadersDialog(Ac.GetLastFileName("points"));
             if (storage == null)
                 return;
 
             using (storage)
             {
+                Ac.SetLastFileName("points", dlg.FilePath);
                 var presenter = new BlockImpTextPresenter(storage);
                 var wnd = new BlockImpTextWindow();
                 wnd.DataContext = presenter;

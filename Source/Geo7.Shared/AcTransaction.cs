@@ -51,6 +51,22 @@ namespace System
 		public LayerTable LayerTable { get; private set; }
 		public TextStyleTable TextStyleTable { get; private set; }
         public BlockTableRecord ModelSpace { get; private set; }
+
+        private LayerTableRecord _currentLayer = null;
+        public LayerTableRecord CurrentLayer
+        {
+            get
+            {
+                if (_currentLayer?.Id != Db.Clayer)
+                    _currentLayer = this.GetObject<LayerTableRecord>(Db.Clayer);
+                return _currentLayer;
+            }
+            set
+            {
+                if (Db.Clayer != value.Id)
+                    Db.Clayer = value.Id;
+            }
+        }
         
 
         protected override void Dispose(bool disposing)
@@ -119,7 +135,7 @@ namespace System
 
         public virtual DBObject GetObject(ObjectId id)
         {
-            if (id.Equals(ObjectId.Null))
+            if (id.Equals(ObjectId.Null) || !id.IsValid)
                 throw new Exception(this.GetType().Name + "GetObject(): NULL ObjectId");
 
             if ((this.Transaction == null) || (this.Transaction.IsDisposed))

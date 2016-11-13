@@ -51,7 +51,7 @@ namespace Geo7.Tools
         {
             using (var docLoc = Ac.Doc.LockDocument())
             {
-                var selectedBlocks = Ac.SelectAllBlocks(this.BlockName);
+                var selectedBlocks = Ac.Editor.GetAllBlocks(this.BlockName);
                 AddSelectedIds(selectedBlocks);
             }
         }
@@ -82,7 +82,7 @@ namespace Geo7.Tools
             using (var docLock = Ac.Doc.LockDocument())
             using (var ui = Ac.StartUserInteraction(_window))
             {
-                var selectedBlocks = Ac.SelectBlocks(BlockName);
+                var selectedBlocks = Ac.Editor.GetBlocks(BlockName);
                 AddSelectedIds(selectedBlocks);
                 ui.End();
             }

@@ -80,7 +80,7 @@ namespace System
             using(var trans = Ac.StartTransaction())
 	        {
                 var acLines = trans.GetAllEntities<Line>();
-                Ac.InitProgress(AcConsts.LoadingLines, acLines.Count());
+                Ac.InitProgress(AppServices.Strings.LoadingLines, acLines.Count());
                 foreach (var acLn in acLines)
                 {
                     if (acLn.Length < 0.000001)
@@ -140,7 +140,7 @@ namespace System
             using (var trans = Ac.StartTransaction())
             try
             {
-                Ac.InitProgress(AcConsts.CreatingPolygons, Lines.Count());
+                Ac.InitProgress(AppServices.Strings.CreatingPolygons, Lines.Count());
                 foreach (var ln in Lines)
                 {
                     Polyline polyline = new Polyline();
@@ -231,7 +231,7 @@ namespace System
                 var allTexts = trans.GetAllEntities<DBText>().Where(t => !string.IsNullOrEmpty(t.TextString.Trim()));
                 var polygons = trans.GetAllEntities<Polyline>().Where(p => (p.Closed == true) && (p.Length > 0.01));
 
-                Ac.InitProgress(AcConsts.ProcessingData, polygons.Count());
+                Ac.InitProgress(AppServices.Strings.ProcessingData, polygons.Count());
                 foreach (var p in polygons)
                 {
                     var pTexts = GetTextsInPolygon(p, allTexts);

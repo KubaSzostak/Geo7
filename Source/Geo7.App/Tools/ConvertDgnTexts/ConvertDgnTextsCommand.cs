@@ -26,8 +26,8 @@ namespace Geo7.Tools
     {
         public ConvertDgnTextsCommand()
         {
-            this.DisplayName = AcConsts.ConvertDgnTexts;
-            this.Description = AcConsts.ConvertDgnTextsDsc;
+            this.DisplayName = AppServices.Strings.ConvertDgnTexts;
+            this.Description = AppServices.Strings.ConvertDgnTextsDsc;
             this.SmallImage = null;// Resources.ConvertDgnTxt;
         }
 
@@ -36,7 +36,7 @@ namespace Geo7.Tools
             using (var trans = Ac.StartTransaction())
             {
                 var txtEnts = trans.GetAllEntities<DBText>();
-                Ac.InitProgress(AcConsts.ProcessingData, txtEnts.Count());
+                Ac.InitProgress(AppServices.Strings.ProcessingData, txtEnts.Count());
                 int txtChanged = 0;
                 foreach (var tEnt in txtEnts)
                 {
@@ -50,7 +50,7 @@ namespace Geo7.Tools
                     }
                 }
                 trans.Commit();
-                Ac.WriteLn(AcConsts.XEntitesUpdated, txtChanged);
+                Ac.WriteLn(AppServices.Strings.XEntitesUpdated, txtChanged);
             }
         }
 

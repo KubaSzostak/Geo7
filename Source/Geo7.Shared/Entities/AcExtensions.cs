@@ -131,4 +131,81 @@ namespace System
     {
     }
 
+    public static class EditorEx
+    {
+        public static bool IsOK(this PromptResult prompt)
+        {
+            return prompt.Status == PromptStatus.OK;
+        }
+
+        public static bool IsCancel(this PromptResult prompt)
+        {
+            return prompt.Status == PromptStatus.Cancel;
+        }
+
+        public static PromptPointOptions GetPromptPointOptions(this Editor ed, string prompt, Point3d basePoint, bool UseDashedLine)
+        {
+            var res =  new PromptPointOptions(prompt);
+            res.BasePoint = basePoint;
+            res.UseBasePoint = true;
+            res.UseDashedLine = UseDashedLine;
+
+            return res;
+        }
+
+
+        public static SelectionFilter GetBlockSelectionFilter(this Editor ed, params string[] blockNames)
+        {
+            var values = new TypedValue[]
+            {
+                Ac.GetTypedValue(DxfCode.Start, "INSERT" ),
+                Ac.GetTypedValue(DxfCode.BlockName, blockNames.Join(",") )
+            };
+            return new SelectionFilter(values);
+        }
+
+        public static AcObjectIds GetBlocks(this Editor ed, params string[] blockNames)
+        {
+            //PromptEntityOptions peo = new PromptEntityOptions("Select blocks: ");
+            //var res = Editor.GetEntity(peo);
+
+            var res = new AcObjectIds();
+
+            var filter = GetBlockSelectionFilter(ed, blockNames);
+            PromptSelectionOptions promptOpt = new PromptSelectionOptions();
+            promptOpt.MessageForAdding = "Select blocks:";
+
+            PromptSelectionResult selRes = Ac.Editor.GetSelection(promptOpt, filter);
+            if (selRes.Status == PromptStatus.OK)
+                res.AddItems(selRes.Value.GetObjectIds());
+            return res;
+        }
+
+        public static AcObjectIds GetAllBlocks(this Editor ed, string blockName)
+        {
+            var res = new AcObjectIds();
+            var filter = GetBlockSelectionFilter(ed, blockName);
+            var selRes = Ac.Editor.SelectAll(filter);
+            if (selRes.Status == PromptStatus.OK)
+                res.AddItems(selRes.Value.GetObjectIds());
+            return res;
+        }
+
+        public static ObjectId GetLine(this Editor ed, string prompt)
+        {
+            var res = ObjectId.Null;
+
+            var promptOpts = new PromptEntityOptions(prompt);
+            promptOpts.SetRejectMessage(prompt);
+            promptOpts.AddAllowedClass(typeof(Polyline), true);
+            promptOpts.AddAllowedClass(typeof(Line), true);
+
+            var promptRes = ed.GetEntity(promptOpts);
+
+            if (promptRes.Status == PromptStatus.OK)
+                return promptRes.ObjectId;
+            else
+                return ObjectId.Null;
+        }
+    }
 }

@@ -19,8 +19,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-//[assembly: CommandClass(typeof(Geo7.AutoCAD.Commands.PromptsTest))]
-//[assembly: CommandClass(typeof(Geo7.AutoCAD.Commands.TestEntityJig))]
 
 namespace Geo7.Tools
 {
@@ -30,23 +28,20 @@ namespace Geo7.Tools
 		{
 			this.DisplayErrormMessageBox = false;
 			this.DimStyleId = AcDwgDb.ImportMissedDimStyle("G7-Slope", Geo7App.Geo7Dwg);
-
-			PromptPointOptions epPrtOpts = new PromptPointOptions("\r\n" + AcConsts.EnterEndPoint);
-			epPrtOpts.UseBasePoint = true;
-			epPrtOpts.UseDashedLine = true;
-
+            
 			do
 			{
-				PromptPointResult ptRes = Ac.Editor.GetPoint("\r\n" + AcConsts.EnterStartPoint);
-				if (ptRes.Status != PromptStatus.OK)
-					return;
-				Point3d startPnt = ptRes.Value;
+				PromptPointResult ptRes = Ac.Editor.GetPoint("\r\n" + AppServices.Strings.EnterStartPoint);
+                if (!ptRes.IsOK())
+                    return;
+				var startPnt = ptRes.Value;
 
-				epPrtOpts.BasePoint = startPnt;
-				ptRes = Ac.Editor.GetPoint(epPrtOpts);
-				if (ptRes.Status != PromptStatus.OK)
+                var epPrtOpts = Ac.Editor.GetPromptPointOptions("\r\n" + AppServices.Strings.EnterEndPoint, startPnt, true);
+                ptRes = Ac.Editor.GetPoint(epPrtOpts);
+                if (!ptRes.IsOK())
 					return;
-				Point3d endPnt = ptRes.Value;
+
+				var endPnt = ptRes.Value;
 
 				AddSlope(startPnt, endPnt);
 
@@ -67,14 +62,9 @@ namespace Geo7.Tools
 			{
 				var dimText = (slope * 100).ToString("0.0") + @"%";
 				AlignedDimension dim = new AlignedDimension(startPnt, endPnt, startPnt, dimText, this.DimStyleId);
-				//dim.XLine1Point = startPnt;
-				//dim.XLine2Point = endPnt;
-				//dim.DimLinePoint = startPnt;
-				//dim.Suffix = @"%";
-				//dim.DimensionText = 
-				//dim.DimensionStyle = 
+                dim.LayerId = trans.CurrentLayer.Id;
 
-				trans.AddEntity(dim);
+                trans.AddEntity(dim);
 				trans.Commit();
 			}
 		}

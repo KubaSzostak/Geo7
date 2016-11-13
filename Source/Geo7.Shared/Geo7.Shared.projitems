@@ -11,13 +11,15 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Ac.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AcCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)AcConsts.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AcTransaction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Classes\ObjectIds.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\AcAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\AcBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\AcCurve.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\AcEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\AcExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\AcLine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\AcPolyline.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\AcText.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\DwgDb.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\Polygons.cs" />

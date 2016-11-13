@@ -274,9 +274,15 @@ namespace Geo7
 		public static void OrthoDist()
 		{
 			new OrthoDistCommand().Execute();
-		}
+        }
 
-		[CommandMethod("G7BugTest", CommandFlags.Modal)]
+        [CommandMethod("G7PtsLnDist", CommandFlags.Modal)]
+        public static void PtLnDist()
+        {
+            new PtsLnDistCommand().Execute();
+        }
+
+        [CommandMethod("G7BugTest", CommandFlags.Modal)]
 		public static void BugTest()
 		{
 			var doc = AcApp.DocumentManager.MdiActiveDocument;

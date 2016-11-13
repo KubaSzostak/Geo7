@@ -130,13 +130,14 @@ namespace Geo7.Tools
 
         private void Export()
         {
-
-            var storage = AppServices.SaveFileDialog.ShowTextLinesWritersDialog(Ac.GetLastFileName("points"));
+            var dlg = AppServices.SaveFileDialog;
+            var storage = dlg.ShowTextLinesWritersDialog(Ac.GetLastFileName("points"));
             if (storage == null)
                 return;
 
             using (storage)
             {
+                Ac.SetLastFileName("points", dlg.FilePath);
                 base.WritePoints(storage, this.GetPoints());
             }          
         }
