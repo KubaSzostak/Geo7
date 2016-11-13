@@ -15,18 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KSz.App.Wpf", "..\..\..\KSz
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KSz.Shared.IO", "..\..\..\KSz.Shared\Source\KSz.Shared.IO\KSz.Shared.IO.shproj", "{82601861-55A4-4136-A647-A284214E97DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VS.Windows.40", "..\..\..\..\VS.Common\VS.Windows.40.csproj", "{097CDAAC-0EAC-4EB4-B14D-B14C665F59CF}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KSz.Shared.App.WPF", "..\..\..\KSz.Shared\Source\KSz.Shared.App.WPF\KSz.Shared.App.WPF.shproj", "{3F27B031-4AD4-43FA-BF64-3104FB4715E2}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KSz.Shared.Core", "..\..\..\KSz.Shared\Source\KSz.Shared.Core\KSz.Shared.Core.shproj", "{47DB778C-DC35-4C48-8F0D-C0EDB164F8F9}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KSz.Shared.App.Native", "..\..\..\KSz.Shared\Source\KSz.Shared.App.Native\KSz.Shared.App.Native.shproj", "{2008A740-950E-45B5-8475-85A4A2A2123E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{68A2F88A-3B12-4B6B-BE28-47DAD8DACA1F}"
-	ProjectSection(SolutionItems) = preProject
-		WebEssentials2015-Settings.json = WebEssentials2015-Settings.json
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -64,10 +57,6 @@ Global
 		{90C02122-0E35-4068-B39F-86B3134EB703}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90C02122-0E35-4068-B39F-86B3134EB703}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90C02122-0E35-4068-B39F-86B3134EB703}.Release|Any CPU.Build.0 = Release|Any CPU
-		{097CDAAC-0EAC-4EB4-B14D-B14C665F59CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{097CDAAC-0EAC-4EB4-B14D-B14C665F59CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{097CDAAC-0EAC-4EB4-B14D-B14C665F59CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{097CDAAC-0EAC-4EB4-B14D-B14C665F59CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
