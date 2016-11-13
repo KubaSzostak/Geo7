@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<CustSection xml:lang="en-US">
+
+  <MenuGroup Name="GEO7">
+    <MacroGroup Name="Geo7">
+      <MenuMacro UID="importpoints">
+        <Macro>
+          <Name>Import Points</Name>
+          <Command>^c^cG7ImportPoints</Command>
+          <HelpString/>
+          <Image ID="import"/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="exportpoints">
+        <Macro>
+          <Name>Export Points</Name>
+          <Command>^c^cG7ExportPoints</Command>
+          <HelpString/>
+          <Image ID="export"/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="pointsettings">
+        <Macro>
+          <Name>Point Settings</Name>
+          <Command>^c^cG7PointSettings</Command>
+          <HelpString/>
+          <Image ID="attedit"/>
+        </Macro>
+      </MenuMacro>
+      
+      <MenuMacro UID="slope">
+        <Macro>
+          <Name>Slope</Name>
+          <Command>^c^cG7Slope</Command>
+          <HelpString/>
+          
+          <Image ID="Slope.png"/></Macro>
+      </MenuMacro>
+      <MenuMacro UID="orthodistance">
+        <Macro>
+          <Name>Ortho Distance</Name>
+          <Command>G7OrthoDist</Command>
+          <HelpString/>
+          <Image ID="OrthoDist"/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="aboutgeo7">
+        <Macro>
+          <Name>About Geo7</Name>
+          <Command>G7Info</Command>
+          <HelpString></HelpString>
+          <Image ID="about"/>
+        </Macro>
+      </MenuMacro>
+    </MacroGroup>
+    <MacroGroup Name="Geo7: Insert Point">
+      <MenuMacro UID="insertpointbyblockname">
+        <Macro>
+          <Name>Point by block name</Name>
+          <Command>^c^cG7InsertPoint</Command>
+          <HelpString/>
+          
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="insertcontrolpoint">
+        <Macro>
+          <Name>Control Point</Name>
+          <Command>^c^cG7InsertPoint;G7-ControlPoint;</Command>
+          <HelpString>Fixed point of known coordinates determined by high-accuracy surveys.</HelpString>
+          
+          <Image ID="ControlPoint"/></Macro>
+      </MenuMacro><MenuMacro UID="insertbenchmark">
+        <Macro>
+          <Name>Benchmark</Name>
+          <Command>^c^cG7InsertPoint;G7-Benchmark;</Command>
+          <HelpString>Permanent marker at a point of determined elevation</HelpString>
+          
+          <Image ID="Benchmark"/></Macro>
+      </MenuMacro>
+      <MenuMacro UID="insertfixedpoint">
+        <Macro>
+          <Name>Fixed Point</Name>
+          <Command>^c^cG7InsertPoint;G7-FixedPoint;</Command>
+          <HelpString/>
+          
+          <Image ID="FixedPoint"/></Macro>
+      </MenuMacro><MenuMacro UID="insertsquarepoint">
+        <Macro>
+          <Name>Square Point</Name>
+          <Command>^c^cG7InsertPoint;G7-SquarePoint;</Command>
+          <HelpString/>
+          
+          <Image ID="SquarePoint"/></Macro>
+      </MenuMacro><MenuMacro UID="insertmarkpoint">
+        <Macro>
+          <Name>Mark Point</Name>
+          <Command>^c^cG7InsertPoint;G7-MarkPoint;</Command>
+          <HelpString/>
+          
+          <Image ID="MarkPoint"/></Macro>
+      </MenuMacro><MenuMacro UID="insertmeasurepoint">
+        <Macro>
+          <Name>Measured Point</Name>
+          <Command>^c^cG7InsertPoint;G7-MeasuredPoint;</Command>
+          <HelpString/>
+          
+          <Image ID="MeasuredPoint"/></Macro>
+      </MenuMacro>
+      
+      <MenuMacro UID="insertheightpoint">
+        <Macro>
+          <Name>Elevation Point</Name>
+          <Command>^c^cG7InsertPoint;G7-ElevationPoint;</Command>
+          <HelpString/>
+          
+          <Image ID="ElevationPoint"/></Macro>
+      </MenuMacro>
+      
+      
+      
+      </MacroGroup>
+    <MacroGroup Name="Attributes">
+      <MenuMacro UID="attext">
+        <Macro>
+          <Name>Extract Attributes</Name>
+          <Command>^c^c_attext</Command>
+          <HelpString>Copies data from attributes to a text file</HelpString>
+          <Image ID="attext"/>
+        </Macro>
+      </MenuMacro>
+      <MenuMacro UID="insertcrosspoint">
+        <Macro>
+          <Name>Cross Point</Name>
+          <Command>^c^cG7InsertPoint;G7Kamien;</Command>
+          <HelpString/>
+          <Image ID="point"/>
+        </Macro>
+      </MenuMacro></MacroGroup>
+    
+    <MenuRoot>
+      <PopMenuRoot>
+        <PopMenu UID="mnGeo7">
+          <Alias>GEO7</Alias>
+          <Name>&amp;Geo7</Name>
+          <PopMenuItem>
+            <NameRef>&amp;Import Points</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="importpoints"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem>
+            <NameRef>&amp;Export Points</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="exportpoints"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem>
+            <NameRef>&amp;Extract Attributes</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="attext"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem IsSeparator="true"/>
+          <PopMenuRef pUID="mnInsertPoint">
+            <Image ID="point"/>
+          </PopMenuRef><PopMenuItem>
+            <NameRef>&amp;Point Settings</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="pointsettings"/>
+            </MenuItem>
+          </PopMenuItem>
+          
+          
+          <PopMenuItem IsSeparator="true"/>
+          <PopMenuItem>
+            <NameRef>&amp;Slope</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="slope"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem>
+            <NameRef>&amp;Ortho Distance</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="orthodistance"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem IsSeparator="true"/>
+          <PopMenuItem>
+            <NameRef>&amp;About Geo7</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="aboutgeo7"/>
+            </MenuItem>
+          </PopMenuItem>
+        </PopMenu>
+        <PopMenu UID="mnInsertPoint">
+          <Name>&amp;Insert Point</Name>
+          <PopMenuItem>
+            <NameRef>&amp;Point by block name</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="insertpointbyblockname"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem IsSeparator="true"/>
+          <PopMenuItem>
+            <NameRef>&amp;Control Point</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="insertcontrolpoint"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem>
+            <NameRef>&amp;Benchmark</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="insertbenchmark"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem>
+            <NameRef>&amp;Fixed Point</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="insertfixedpoint"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem>
+            <NameRef>&amp;Square Point</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="insertsquarepoint"/>
+            </MenuItem>
+          </PopMenuItem><PopMenuItem>
+            <NameRef>&amp;Mark Point</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="insertmarkpoint"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem>
+            <NameRef>&amp;Measured Point</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="insertmeasurepoint"/>
+            </MenuItem>
+          </PopMenuItem>
+          <PopMenuItem>
+            <NameRef>&amp;Elevation Point</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="insertheightpoint"/>
+            </MenuItem>
+          </PopMenuItem>
+          
+        </PopMenu>
+      </PopMenuRoot>
+      <RibbonRoot>
+        <RibbonTabSourceCollection/>
+        <RibbonPanelSourceCollection/>
+      </RibbonRoot>
+      <MouseButtonRoot/>
+      <DoubleClickRoot/>
+      <DigitizerButtonRoot/>
+      <TabletMenuRoot/>
+    </MenuRoot>
+  </MenuGroup>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</CustSection>

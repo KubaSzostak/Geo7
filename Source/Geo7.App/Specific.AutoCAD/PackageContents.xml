@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ApplicationPackage SchemaVersion="1.0"
+                        Name="Geo7 Tools"
+                        AppVersion="2013.14.12.17"
+                        Description="Geo7 for AutoCAD"
+                        Email="kuba.szostak@gmail.com"
+                        Author="Kuba Szostak">
+  <CompanyDetails Name="Kuba Szostak"  Url="kubaszostak.github.io" Email="kuba.szostak@gmail.com" />
+
+  <Components>
+    <RuntimeRequirements
+      SupportPath="./Dwg"
+      Platform="AutoCAD|AutoCAD*"
+      OS="Win32|Win64"
+      SeriesMin="R19.0" />
+    <ComponentEntry AppName="Geo7.Tools"
+      AppDescription="Geo7 Tools"
+      ModuleName="./Geo7.Tools.AutoCAD.dll"
+                    LoadReason="LoadOnAutoCADStartup " >
+      <Commands GroupName="GEO7">
+        <Command Local="G7" Global="G7" />
+        <Command Local="G7LOG" Global="G7LOG" />
+      </Commands>
+    </ComponentEntry>
+  </Components>
+
+</ApplicationPackage>

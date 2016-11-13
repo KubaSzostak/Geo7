@@ -1,0 +1,75 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Geo7.Shared", "Geo7.Shared\Geo7.Shared.shproj", "{C5B77044-DB60-4861-BAB6-9B5EA1E4E1A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geo7.AutoCAD", "Geo7.AutoCAD\Geo7.AutoCAD.csproj", "{E6D1502A-A0B6-4DE6-A875-CCB76C45E386}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geo7.ZwCAD", "Geo7.ZwCAD\Geo7.ZwCAD.csproj", "{4C0E14BC-F7FC-4AC1-93FB-A829D64C7342}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geo7.BricsCAD", "Geo7.App\Geo7.BricsCAD.csproj", "{290809C6-7644-43EF-9F48-EFD3FBEC3A5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KSz.App.Wpf", "..\..\..\KSz.Shared\Source\KSz.App.WPF\KSz.App.Wpf.csproj", "{90C02122-0E35-4068-B39F-86B3134EB703}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KSz.Shared.IO", "..\..\..\KSz.Shared\Source\KSz.Shared.IO\KSz.Shared.IO.shproj", "{82601861-55A4-4136-A647-A284214E97DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VS.Windows.40", "..\..\..\..\VS.Common\VS.Windows.40.csproj", "{097CDAAC-0EAC-4EB4-B14D-B14C665F59CF}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KSz.Shared.App.WPF", "..\..\..\KSz.Shared\Source\KSz.Shared.App.WPF\KSz.Shared.App.WPF.shproj", "{3F27B031-4AD4-43FA-BF64-3104FB4715E2}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KSz.Shared.Core", "..\..\..\KSz.Shared\Source\KSz.Shared.Core\KSz.Shared.Core.shproj", "{47DB778C-DC35-4C48-8F0D-C0EDB164F8F9}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KSz.Shared.App.Native", "..\..\..\KSz.Shared\Source\KSz.Shared.App.Native\KSz.Shared.App.Native.shproj", "{2008A740-950E-45B5-8475-85A4A2A2123E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{68A2F88A-3B12-4B6B-BE28-47DAD8DACA1F}"
+	ProjectSection(SolutionItems) = preProject
+		WebEssentials2015-Settings.json = WebEssentials2015-Settings.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\..\..\KSz.Shared\Source\KSz.Shared.App.Native\KSz.Shared.NativeApp.projitems*{2008a740-950e-45b5-8475-85a4a2a2123e}*SharedItemsImports = 13
+		Geo7.Shared\Geo7.Shared.projitems*{290809c6-7644-43ef-9f48-efd3fbec3a5c}*SharedItemsImports = 4
+		..\..\..\KSz.Shared\Source\KSz.Shared.App.WPF\KSz.Shared.WPF.projitems*{3f27b031-4ad4-43fa-bf64-3104fb4715e2}*SharedItemsImports = 13
+		..\..\..\KSz.Shared\Source\KSz.Shared.Core\KSz.Shared.Core.projitems*{47db778c-dc35-4c48-8f0d-c0edb164f8f9}*SharedItemsImports = 13
+		..\..\..\KSz.Shared\Source\KSz.Shared.IO\KSz.Shared.IO.projitems*{82601861-55a4-4136-a647-a284214e97db}*SharedItemsImports = 13
+		..\..\..\KSz.Shared\Source\KSz.Shared.App.Native\KSz.Shared.NativeApp.projitems*{90c02122-0e35-4068-b39f-86b3134eb703}*SharedItemsImports = 4
+		..\..\..\KSz.Shared\Source\KSz.Shared.App.WPF\KSz.Shared.WPF.projitems*{90c02122-0e35-4068-b39f-86b3134eb703}*SharedItemsImports = 4
+		..\..\..\KSz.Shared\Source\KSz.Shared.Core\KSz.Shared.Core.projitems*{90c02122-0e35-4068-b39f-86b3134eb703}*SharedItemsImports = 4
+		..\..\..\KSz.Shared\Source\KSz.Shared.Db\KSz.Shared.Data.projitems*{90c02122-0e35-4068-b39f-86b3134eb703}*SharedItemsImports = 4
+		..\..\..\KSz.Shared\Source\KSz.Shared.EGB\KSz.Shared.EGB.projitems*{90c02122-0e35-4068-b39f-86b3134eb703}*SharedItemsImports = 4
+		..\..\..\KSz.Shared\Source\KSz.Shared.IO\KSz.Shared.IO.projitems*{90c02122-0e35-4068-b39f-86b3134eb703}*SharedItemsImports = 4
+		Geo7.Shared\Geo7.Shared.projitems*{c5b77044-db60-4861-bab6-9b5ea1e4e1a9}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6D1502A-A0B6-4DE6-A875-CCB76C45E386}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6D1502A-A0B6-4DE6-A875-CCB76C45E386}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6D1502A-A0B6-4DE6-A875-CCB76C45E386}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6D1502A-A0B6-4DE6-A875-CCB76C45E386}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C0E14BC-F7FC-4AC1-93FB-A829D64C7342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C0E14BC-F7FC-4AC1-93FB-A829D64C7342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C0E14BC-F7FC-4AC1-93FB-A829D64C7342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C0E14BC-F7FC-4AC1-93FB-A829D64C7342}.Release|Any CPU.Build.0 = Release|Any CPU
+		{290809C6-7644-43EF-9F48-EFD3FBEC3A5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{290809C6-7644-43EF-9F48-EFD3FBEC3A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{290809C6-7644-43EF-9F48-EFD3FBEC3A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{290809C6-7644-43EF-9F48-EFD3FBEC3A5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90C02122-0E35-4068-B39F-86B3134EB703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90C02122-0E35-4068-B39F-86B3134EB703}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90C02122-0E35-4068-B39F-86B3134EB703}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90C02122-0E35-4068-B39F-86B3134EB703}.Release|Any CPU.Build.0 = Release|Any CPU
+		{097CDAAC-0EAC-4EB4-B14D-B14C665F59CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{097CDAAC-0EAC-4EB4-B14D-B14C665F59CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{097CDAAC-0EAC-4EB4-B14D-B14C665F59CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{097CDAAC-0EAC-4EB4-B14D-B14C665F59CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

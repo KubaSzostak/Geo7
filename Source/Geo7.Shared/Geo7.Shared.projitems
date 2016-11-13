@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>c5b77044-db60-4861-bab6-9b5ea1e4e1a9</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Geo7</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Ac.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AcCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AcConsts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AcTransaction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\AcAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\AcBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\AcEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\AcExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\AcText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\DwgDb.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\Polygons.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\RemoveDuplicates.cs" />
+  </ItemGroup>
+</Project>

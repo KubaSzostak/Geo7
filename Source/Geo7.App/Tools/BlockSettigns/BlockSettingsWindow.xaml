@@ -1,0 +1,49 @@
+﻿<Window x:Class="Geo7.Windows.BlockSettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        ResizeMode="NoResize"
+        Title="Block Settings" 
+        Height="314.082" 
+        Width="322" 
+        WindowStyle="ToolWindow">
+    <Grid Margin="8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="186*" />
+            <ColumnDefinition Width="92*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="4">
+            <Label Content="Block name"  />
+            <ComboBox Height="23"  ItemsSource="{Binding Path=BlockList}" SelectedItem="{Binding Path=SelectedBlock}" DisplayMemberPath="Name"  />
+            <Label Content="Scale" />
+            <TextBox Height="23"  Text="{Binding SelectedBlockScale}"  />
+            <Label Content="Attributes"  />
+            
+
+            <ListView  ItemsSource="{Binding Path=SelectedBlockAttributes}"  
+                       MinHeight="120"
+                       
+                       SelectionMode="Single">
+                <ListView.View>
+                    <GridView AllowsColumnReorder="true">
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Tag}"
+                                        Width="100"
+                                        Header="Attribute"  >                          
+                        </GridViewColumn>
+                        <GridViewColumn Header="Visibility" >  
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding Path=AttrVisiblePresenter}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>                         
+                        </GridViewColumn>
+                    </GridView>
+                    
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="4,16" VerticalAlignment="Bottom">
+            <Button Margin="4" Command="{Binding SaveCommand}">Save</Button>
+            <Button Margin="4" IsCancel="True" IsDefault="True">Close</Button>
+        </StackPanel>
+    </Grid>
+</Window>

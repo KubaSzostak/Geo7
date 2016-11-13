@@ -181,3 +181,11 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+/install
+/Source/Geo7.App/dwg/Geo7-pl.bak
+/Source/Geo7.App/dwg/Geo7.bak
+/Source/Geo7.App/dwg/Blocks
+/Source/Geo7.App/Resources/Svg
+/Source/Geo7.App/Resources/Points
+/Source/Geo7.App/Resources/Png16
+/Source/Geo7.App/Resources/Bmp
