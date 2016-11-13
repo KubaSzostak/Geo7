@@ -5,26 +5,6 @@ using System.Text;
 
 
 
-#if AutoCAD
-using Autodesk.AutoCAD.Runtime;
-using Autodesk.AutoCAD.DatabaseServices;
-using Autodesk.AutoCAD.Geometry;
-using Autodesk.AutoCAD.ApplicationServices;
-using Autodesk.AutoCAD.EditorInput;
-
-using AcApp = Autodesk.AutoCAD.ApplicationServices.Application;
-#endif
-
-#if BricsCAD
-using Teigha.Runtime;
-using Teigha.DatabaseServices;
-using Teigha.Geometry;
-using Bricscad.ApplicationServices;
-using Bricscad.EditorInput;
-
-using AcApp = Bricscad.ApplicationServices.Application;
-#endif
-
 //[assembly: CommandClass(typeof(Geo7.AutoCAD.Commands.PromptsTest))]
 //[assembly: CommandClass(typeof(Geo7.AutoCAD.Commands.TestEntityJig))]
 
@@ -41,26 +21,26 @@ namespace Geo7.Tools
 
         protected override void ExecuteCore()
         {
-            var lastPolarMode = (Int16)AcApp.GetSystemVariable("POLARMODE");
-            var lastAutoSnap = (Int16)AcApp.GetSystemVariable("AUTOSNAP");
-            var angDir = AcApp.GetSystemVariable("ANGDIR");
-            var angBase = AcApp.GetSystemVariable("ANGBASE");
+            var lastPolarMode = (Int16)Ac.GetSystemVariable("POLARMODE");
+            var lastAutoSnap = (Int16)Ac.GetSystemVariable("AUTOSNAP");
+            var angDir = Ac.GetSystemVariable("ANGDIR");
+            var angBase = Ac.GetSystemVariable("ANGBASE");
 
             try
             {
                 // Gdy jest ustawiony CLOCKWISE AC uważa, że 100g=>300g, więc ustaw wartości zerowe
-                AcApp.SetSystemVariable("ANGDIR", Convert.ToInt16(0));
-                AcApp.SetSystemVariable("ANGBASE", 0.0);
+                Ac.SetSystemVariable("ANGDIR", Convert.ToInt16(0));
+                Ac.SetSystemVariable("ANGBASE", 0.0);
 
-                AcApp.SetSystemVariable("POLARANG", OrtoAngle); // Set polar angle value
-                AcApp.SetSystemVariable("POLARMODE", lastPolarMode | 1); //Turns on relative tracking
-                AcApp.SetSystemVariable("AUTOSNAP", 8 | lastAutoSnap); //Turns on polar tracking
+                Ac.SetSystemVariable("POLARANG", OrtoAngle); // Set polar angle value
+                Ac.SetSystemVariable("POLARMODE", lastPolarMode | 1); //Turns on relative tracking
+                Ac.SetSystemVariable("AUTOSNAP", 8 | lastAutoSnap); //Turns on polar tracking
             }
             finally 
             {
                 // A potem wróć do wartości poprzednich
-                AcApp.SetSystemVariable("ANGDIR", angDir);
-                AcApp.SetSystemVariable("ANGBASE", angBase);
+                Ac.SetSystemVariable("ANGDIR", angDir);
+                Ac.SetSystemVariable("ANGBASE", angBase);
             }
 
             Ac.ExecuteCommand("_pline ");

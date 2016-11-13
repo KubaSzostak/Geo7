@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Geo7.Windows;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,23 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 
 
-#if AutoCAD
-using Autodesk.AutoCAD.Runtime;
-using Autodesk.AutoCAD.DatabaseServices;
-using Autodesk.AutoCAD.Geometry;
-using Autodesk.AutoCAD.ApplicationServices;
-using Autodesk.AutoCAD.EditorInput;
-#endif
-
-#if BricsCAD
-using Teigha.Runtime;
-using Teigha.DatabaseServices;
-using Teigha.Geometry;
-using Bricscad.ApplicationServices;
-using Bricscad.EditorInput;
-using System.Diagnostics;
-using Geo7.Windows;
-#endif
 
 namespace Geo7.Tools
 {

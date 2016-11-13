@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AcCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AcConsts.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AcTransaction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Classes\ObjectIds.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\AcAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\AcBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\AcEntity.cs" />

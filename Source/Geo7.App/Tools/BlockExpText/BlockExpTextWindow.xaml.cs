@@ -14,32 +14,7 @@ using System.Windows.Forms;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows.Interop;
-
-
-#if AutoCAD
-using Autodesk.AutoCAD.Runtime;
-using Autodesk.AutoCAD.DatabaseServices;
-using Autodesk.AutoCAD.Geometry;
-using Autodesk.AutoCAD.Colors;
-using Autodesk.AutoCAD.ApplicationServices;
-using Autodesk.AutoCAD.Windows;
-using Autodesk.AutoCAD.EditorInput;
-
-using AcApp = Autodesk.AutoCAD.ApplicationServices.Application;
-#endif
-
-#if BricsCAD
-using Teigha.Runtime;
-using Teigha.DatabaseServices;
-using Teigha.Geometry;
-using Teigha.Colors;
-using Bricscad.ApplicationServices;
-using Bricscad.Windows;
-using Bricscad.EditorInput;
-
-using AcApp = Bricscad.ApplicationServices.Application;
 using Geo7.Tools;
-#endif
 
 namespace Geo7.Windows
 {
@@ -48,15 +23,11 @@ namespace Geo7.Windows
     /// </summary>
     public partial class BlockExpTextWindow : System.Windows.Window
     {
-        public BlockExpTextWindow()
+        public BlockExpTextWindow(List<AcBlockRef> blockRefs)
         {
             InitializeComponent();
-            //imgSelectBlocks.Source = Resources.
-            
-            DataContext = new BlockExpTextPresenter(this); 
-        }
-
-        
+            DataContext = new BlockExpTextPresenter(blockRefs);
+        }        
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {

@@ -10,35 +10,28 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Windows.Forms;
-using System.IO;
-using System.Drawing;
 
-
-
-namespace Geo7.Windows
+namespace Geo7.Tools
 {
     /// <summary>
-    /// Interaction logic for BlocksImportWindow.xaml
+    /// Interaction logic for BlockSelectWindow.xaml
     /// </summary>
-    public partial class BlockImpTextWindow : System.Windows.Window
+    public partial class BlockSelectWindow : Window
     {
-        public BlockImpTextWindow()
+        public BlockSelectWindow(BlockRefsAction action)
         {
-            InitializeComponent();           
+            InitializeComponent();
+            DataContext = new BlockSelectPresenter(this, action);
         }
         
-        
-        private void BtnClose_Click(object sender, RoutedEventArgs e)
+
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
-            //this.Close(); this.IsCancel = true
+            this.Close();
         }
-                
 
         private void BtnOK_Click(object sender, RoutedEventArgs e)
         {
-            //AppServices.Dialog.ShowInfo("BtnOK_Click");
-            this.DialogResult = true;
             this.Close();
         }
     }

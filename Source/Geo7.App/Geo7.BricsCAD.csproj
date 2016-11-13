@@ -78,6 +78,10 @@
       <DependentUpon>BlockImpTextWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\BlockInsert\BlockInsertCommand.cs" />
+    <Compile Include="Tools\BlockSelect\BlockSelectPresenter.cs" />
+    <Compile Include="Tools\BlockSelect\BlockSelectWindow.xaml.cs">
+      <DependentUpon>BlockSelectWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tools\BlockSettigns\BlockSettingsCommand.cs" />
     <Compile Include="Tools\BlockSettigns\BlockSettingsPresenter.cs" />
     <Compile Include="Tools\BlockSettigns\BlockSettingsWindow.xaml.cs">
@@ -177,6 +181,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Tools\BlockImpText\BlockImpTextWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tools\BlockSelect\BlockSelectWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

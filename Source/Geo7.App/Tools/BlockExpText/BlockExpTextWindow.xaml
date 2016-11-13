@@ -3,8 +3,79 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:tools="clr-namespace:Geo7.Tools"
-        Title="Block Export " Height="360" Width="600" WindowStyle="ToolWindow">
-    <DockPanel >
+        ResizeMode="NoResize"
+        SizeToContent="Height"
+        Width="350"
+        Title="Block Export ">
+    <StackPanel>
+
+        <StackPanel  Margin="8,0">
+            
+            <Label Content="Output file format" FontWeight="Bold" Foreground="DimGray" Padding="5,15,5,0" />
+            <StackPanel Margin="12,3">
+                <CheckBox 
+                    Margin="0,2" 
+                    IsChecked="{Binding ChangeCoordinatesOrder}"
+                    Content="Change X,Y coordinates order"/>
+                <CheckBox 
+                    Margin="0,2" 
+                    IsChecked="{Binding UseHeightAttribute}"
+                    Content="Use attribute value instead of Z coordinate">
+                    <CheckBox.ToolTip>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Valid Z attributes: " />
+                            <TextBlock Text="{Binding ValidHeightAttributes}"/>
+                        </StackPanel>
+                    </CheckBox.ToolTip>
+                </CheckBox>
+                <CheckBox 
+                    Margin="0,2" 
+                    IsChecked="{Binding UseAdditionalFields}"
+                    Content="Write all attributes"/>
+                <CheckBox 
+                    Margin="0,2" 
+                    IsChecked="{Binding WriteHeader}"
+                    Content="Add header with file format description"/>
+            </StackPanel>
+            
+            <StackPanel Orientation="Vertical" Margin="24,2">
+                <TextBlock Text="{Binding SampleDataFormat}" Foreground="Gray" FontWeight="Bold" Name="LblFileFormat">
+                    <TextBlock.ToolTip>
+                        <StackPanel>
+                            <TextBlock Text="Valid Id attributes: "/>
+                            <TextBlock Text="{Binding ValidIdAttributes}" />
+                        </StackPanel>
+                    </TextBlock.ToolTip>
+                </TextBlock>
+                <TextBlock Text="{Binding SampleDataText}" Foreground="Gray"  Name="LblFileLn" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" />
+            </StackPanel>
+
+            <Label Content="Coordinates precision" FontWeight="Bold" Foreground="DimGray" Padding="5,15,5,6" />
+            <StackPanel Orientation="Horizontal" Margin="12,0">
+                <TextBlock  Width="100" VerticalAlignment="Center">X,Y coordinates:</TextBlock>
+                <ComboBox  
+                    Margin="8,0" 
+                    Width="80"
+                    ItemsSource="{Binding PrecisionList}" 
+                    SelectedItem="{Binding CoordinatesPrecision}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="12,6">
+                <TextBlock Width="100" VerticalAlignment="Center">Z coordinate:</TextBlock>
+                <ComboBox  
+                    Margin="8,0" 
+                    Width="80" 
+                    ItemsSource="{Binding PrecisionList}" 
+                    SelectedItem="{Binding ThirdCoordinatePrecision}" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="8">
+                <TextBlock Text="Block count: " Foreground="DimGray" />
+                <TextBlock Text="{Binding BlockCount}"  Foreground="DimGray" />
+            </StackPanel>
+
+        </StackPanel>
+
+
         <Border 
             BorderBrush="Gray" 
             DockPanel.Dock="Bottom" 
@@ -12,7 +83,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button 
                     Padding="8,4" 
-                    Margin="12" 
+                    Margin="48,12,12,12" 
                     Width="80"  
                     IsCancel="True" 
                     Click="BtnCancel_Click">Cancel</Button>
@@ -27,117 +98,5 @@
             </StackPanel>
         </Border>
         
-        
-        <Border BorderBrush="Gray" Margin="8,0">
-            <StackPanel DockPanel.Dock="Left">
-                <Label Content="Select blocks" FontWeight="Bold" Foreground="DimGray" Padding="5,15,5,0" />
-                <Label Content="Add blocks named" Margin="8,0" />
-                <ComboBox  Margin="8,0" ItemsSource="{Binding BlockNames}" SelectedItem="{Binding BlockName}"  />
-                <StackPanel Orientation="Horizontal" Margin="8,8,8,0">
-                    <Button  
-                        Padding="4,1" 
-                        MinWidth="22" 
-                        Command="{Binding SelectBlocksCommand}" >
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="../../Resources/select-object.png"  />                        
-                        </StackPanel>
-                    </Button>
-                    <Label Content="Add by selecting blocks" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="8,0">
-                    <Button  
-                        Padding="4,1" 
-                        MinWidth="22" 
-                        Command="{Binding SelectAllBlocksCommand}">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="../../Resources/quick-select.png" />
-                        </StackPanel>
-                    </Button>
-
-                    <Label Content="Add all blocks" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="8,0">
-                    <Button  
-                        IsEnabled="{Binding HasSelectedBlocks}" 
-                        Command="{Binding ClearSeclectedBlocksCommand}"
-                        Padding="4,1" MinWidth="22" >
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="../../Resources/delete-objects.png"   />
-                        </StackPanel>
-                    </Button>
-                    <Label Content="Clear selection" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="8">
-                    <TextBlock Text="Selected block count: " />
-                    <TextBlock Text="{Binding SelectedBlockCount}" />                    
-                </StackPanel>
-            </StackPanel>  
-        </Border>
-        
-        <Separator DockPanel.Dock="Left"  Margin="8" Width="2" Foreground="Silver" />
-
-
-        <Border BorderBrush="Gray">
-            <StackPanel>
-                <Label Content="Output file format" FontWeight="Bold" Foreground="DimGray" Padding="5,15,5,0" />
-                <StackPanel Margin="12,3">
-                    <CheckBox 
-                        Margin="0,2" 
-                        IsChecked="{Binding ChangeCoordinatesOrder}"
-                        Content="Change X,Y coordinates order"/>
-                    <CheckBox 
-                        Margin="0,2" 
-                        IsChecked="{Binding UseHeightAttribute}"
-                        Content="Use attribute value instead of Z coordinate">
-                        <CheckBox.ToolTip>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="Valid Z attributes: " />
-                                <TextBlock Text="{Binding ValidHeightAttributes}"/>
-                            </StackPanel>
-                        </CheckBox.ToolTip>
-                    </CheckBox>
-                    <CheckBox 
-                        Margin="0,2" 
-                        IsChecked="{Binding UseAdditionalFields}"
-                        Content="Write all attributes"/>
-                    <CheckBox 
-                        Margin="0,2" 
-                        IsChecked="{Binding WriteHeader}"
-                        Content="Add header with file format description"/>
-
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Margin="24,2">
-                    <TextBlock Text="{Binding SampleDataFormat}" Foreground="Gray" FontWeight="Bold" Name="LblFileFormat">
-                        <TextBlock.ToolTip>
-                            <StackPanel>
-                                <TextBlock Text="Valid Id attributes: "/>
-                                <TextBlock Text="{Binding ValidIdAttributes}" />
-                            </StackPanel>
-                        </TextBlock.ToolTip>
-                    </TextBlock>
-                    <TextBlock Text="{Binding SampleDataText}" Foreground="Gray"  Name="LblFileLn" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" />
-                </StackPanel>
-
-                <Label Content="Coordinates precision" FontWeight="Bold" Foreground="DimGray" Padding="5,15,5,6" />
-                <StackPanel Orientation="Horizontal" Margin="12,0">
-                    <TextBlock  Width="100" VerticalAlignment="Center">X,Y coordinates:</TextBlock>
-                    <ComboBox  
-                        Margin="8,0" 
-                        Width="80"
-                        ItemsSource="{Binding PrecisionList}" 
-                        SelectedItem="{Binding CoordinatesPrecision}" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="12,6">
-                    <TextBlock Width="100" VerticalAlignment="Center">Z coordinate:</TextBlock>
-                    <ComboBox  
-                        Margin="8,0" 
-                        Width="80" 
-                        ItemsSource="{Binding PrecisionList}" 
-                        SelectedItem="{Binding ThirdCoordinatePrecision}" />
-
-                </StackPanel>
-
-            </StackPanel>
-        </Border>
-    </DockPanel>
+    </StackPanel>
 </Window>

@@ -396,9 +396,9 @@ namespace System
         public static bool ShowModal(System.Windows.Window wnd)
         {
             wnd.ShowInTaskbar = false;
-            wnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
             wnd.Topmost = true;
-            wnd.ShowInTaskbar = false;
+            wnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            wnd.ResizeMode = Windows.ResizeMode.NoResize; // This hides window Minimize/Maximize buttons
 
 #if AutoCAD
             AcApp.ShowModalWindow(null, wnd, false);
@@ -518,47 +518,7 @@ namespace System
             opt.InitialFileName = IO.Path.GetFileNameWithoutExtension(filePath);
             opt.Filter = filter;
         }
-
-        public static string FileDlgCoordFilter = SysUtils.Strings.TxtFiles + "|*.txt" + "|" + SysUtils.Strings.AllFiles + "|*.*";
-
-        public static System.Windows.Forms.OpenFileDialog ShowOpenFileDialog(string filter)
-        {
-            var filePath = GetLastFileName(filter);
-            var dlg = new System.Windows.Forms.OpenFileDialog();
-
-            dlg.InitialDirectory = IO.Path.GetDirectoryName(filePath);
-            dlg.FileName = IO.Path.GetFileName(filePath);
-            dlg.Filter = filter;
-            if (dlg.ShowDialog() == Windows.Forms.DialogResult.OK)
-                return dlg;
-            else
-                return null;
-        }
-
-        public static string ShowOpenFileDlg(string filter)
-        {
-            var opt = new PromptOpenFileOptions(" ");
-            InitFileDlgOptions(opt, filter);
-            var res = Ac.Editor.GetFileNameForOpen(opt);
-            if (res.Status != PromptStatus.OK)
-                return null;
-
-            SetLastFileName(filter, res.StringResult);
-            return res.StringResult;
-        }
-
-        public static string ShowSaveFileDlg(string filter)
-        {
-            var opt = new PromptSaveFileOptions(" ");
-            InitFileDlgOptions(opt, filter);
-            var res = Ac.Editor.GetFileNameForSave(opt);
-            if (res.Status != PromptStatus.OK)
-                return null;
-
-            SetLastFileName(filter, res.StringResult);
-            return res.StringResult;
-        }
-
+        
 
         public static SelectionFilter GetSelectBlocksFilter(params string[] blockNames)
         {
