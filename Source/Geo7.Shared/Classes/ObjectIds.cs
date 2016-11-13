@@ -18,7 +18,7 @@ using Bricscad.ApplicationServices;
 using Bricscad.EditorInput;
 #endif
 
-namespace Geo7.Classes
+namespace System
 {
     public class AcObjectIds : HashSet<ObjectId>
     {

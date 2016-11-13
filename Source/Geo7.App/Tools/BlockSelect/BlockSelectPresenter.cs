@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
-using Teigha.DatabaseServices;
 
 namespace Geo7.Tools
 {
@@ -22,11 +21,11 @@ namespace Geo7.Tools
 
 
         private System.Windows.Window _window;
-        private HashSet<ObjectId> _selectedIds = new HashSet<ObjectId>();
+        private AcObjectIds _selectedIds = new AcObjectIds();
         private BlockRefsAction _action;
 
 
-        public void AddSelectedIds(IEnumerable<ObjectId> ids)
+        public void AddSelectedIds(AcObjectIds ids)
         {
             _selectedIds.AddItems(ids);
             OnPropertyChanged(nameof(HasSelectedBlocks));

@@ -531,10 +531,12 @@ namespace System
             return new SelectionFilter(values);
         }
 
-        public static ObjectId[] SelectBlocks(params string[]  blockNames)
+        public static AcObjectIds SelectBlocks(params string[]  blockNames)
         {
             //PromptEntityOptions peo = new PromptEntityOptions("Select blocks: ");
             //var res = Editor.GetEntity(peo);
+
+            var res = new AcObjectIds();
 
             var filter = GetSelectBlocksFilter(blockNames);
             PromptSelectionOptions promptOpt = new PromptSelectionOptions();
@@ -542,17 +544,18 @@ namespace System
 
             PromptSelectionResult selRes = Ac.Editor.GetSelection(promptOpt, filter);
             if (selRes.Status == PromptStatus.OK)
-                return selRes.Value.GetObjectIds();
-            return new ObjectId[0];
+                res.AddItems(selRes.Value.GetObjectIds());
+            return res;
         }
 
-        public static ObjectId[] SelectAllBlocks(string blockName)
+        public static AcObjectIds SelectAllBlocks(string blockName)
         {
+            var res = new AcObjectIds();
             var filter = GetSelectBlocksFilter(blockName);
             var selRes = Ac.Editor.SelectAll(filter);
             if (selRes.Status == PromptStatus.OK)
-                return selRes.Value.GetObjectIds();
-            return new ObjectId[0];
+                res.AddItems(selRes.Value.GetObjectIds());
+            return res;
         }
 
         public static string GetValidName(string name)
