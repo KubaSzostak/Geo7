@@ -2,7 +2,7 @@
 ; http://www.jrsoftware.org/
 
 #define AppName "Geo7"
-#define AppVersion "v3.0.0-beta.4"
+#define AppVersion "v3.0.0-beta.6"
 
 #define AppPublisher "Kuba Szostak"
 #define AppURL "https://github.com/kubaszostak/Geo7/"
@@ -35,7 +35,7 @@ OutputDir=..\..\install\
 ;InfoAfterFile=post-install-info-pl.rtf
 ;WizardImageFile=geo7-wizzard-4.bmp
 ArchitecturesInstallIn64BitMode=x64 ia64
-;SignTool=osd-ksz
+SignTool=osd-ksz
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"

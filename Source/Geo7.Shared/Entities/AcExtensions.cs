@@ -114,6 +114,11 @@ namespace System
                 return new Point3d(pt.X, pt.Y, pt.Z);
         }
 
+        public static Point3d ToPoint3dPlanar(this Point3d pt)
+        {
+            return new Point3d(pt.X, pt.Y, 0.0);
+        }
+
         public static XyzPoint ToXyzPoint(this Point3d pt)
         {
             return new XyzPoint() { X = pt.X, Y = pt.Y, Z = pt.Y };
@@ -199,6 +204,22 @@ namespace System
             promptOpts.SetRejectMessage(prompt);
             promptOpts.AddAllowedClass(typeof(Polyline), true);
             promptOpts.AddAllowedClass(typeof(Line), true);
+
+            var promptRes = ed.GetEntity(promptOpts);
+
+            if (promptRes.Status == PromptStatus.OK)
+                return promptRes.ObjectId;
+            else
+                return ObjectId.Null;
+        }
+
+        public static ObjectId GetPolyline(this Editor ed, string prompt)
+        {
+            var res = ObjectId.Null;
+
+            var promptOpts = new PromptEntityOptions(prompt);
+            promptOpts.SetRejectMessage(prompt);
+            promptOpts.AddAllowedClass(typeof(Polyline), true);
 
             var promptRes = ed.GetEntity(promptOpts);
 
