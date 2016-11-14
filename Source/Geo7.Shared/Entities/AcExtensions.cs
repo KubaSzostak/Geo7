@@ -159,6 +159,16 @@ namespace System
         }
 
 
+        public static PromptStringOptions GetPromptStringOptions(this Editor ed, string prompt, string defaultValue, bool allowSpaces, bool useDefaultValue)
+        {
+            var res = new PromptStringOptions(prompt);
+            res.DefaultValue = defaultValue;
+            res.AllowSpaces = allowSpaces;
+            res.UseDefaultValue = useDefaultValue;
+
+            return res;
+        }
+
         public static SelectionFilter GetBlockSelectionFilter(this Editor ed, params string[] blockNames)
         {
             var values = new TypedValue[]

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using System.Reflection;
-using System.IO;
-using System.Windows.Forms.Integration;
-using Geo7;
-
+﻿
 
 #if AutoCAD
 using Autodesk.AutoCAD.Runtime;
@@ -30,8 +22,19 @@ using Bricscad.Windows;
 using Bricscad.EditorInput;
 
 using AcApp = Bricscad.ApplicationServices.Application;
-using System.Xml.Linq;
 #endif
+
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Linq;
+using System.Reflection;
+using System.IO;
+using System.Windows.Forms.Integration;
+using Geo7;
+using System.Xml.Linq;
+
 
 
 namespace System
@@ -81,7 +84,7 @@ namespace System
 
         public static string Version
         {
-            get { return AcApp.Version; }
+            get { return AcApp.Version.ToString(); }
         }
 
         public static dynamic AcadApplication
@@ -186,9 +189,9 @@ namespace System
         }
 
 
-        public static AcTransaction StartTransaction()
+        public static AcTransaction StartTransaction(bool lockDocument = false)
         {
-            return Db.StartAcTransaction();
+            return Db.StartAcTransaction(lockDocument);
         }
 
         public static EditorUserInteraction StartUserInteraction(Windows.Forms.Control modalForm)
@@ -364,35 +367,6 @@ namespace System
 
         }
 
-        public static System.Windows.Forms.DialogResult ShowModalDialog(System.Windows.Forms.Form form)
-        {
-            return AcApp.ShowModalDialog(form);
-        }
-        public static void ShowModelessDialog(System.Windows.Forms.Form formToShow)
-        {
-            AcApp.ShowModelessDialog(formToShow);
-        }
-
-        public static System.Windows.Forms.DialogResult ShowModalForm(System.Windows.Forms.Form form)
-        {
-            form.FormBorderStyle = Windows.Forms.FormBorderStyle.FixedDialog;
-            form.StartPosition = Windows.Forms.FormStartPosition.CenterParent;
-            form.ShowInTaskbar = false;
-            form.ShowIcon = false;
-            form.MaximizeBox = false;
-            form.MinimizeBox = false;
-            form.ControlBox = true;
-
-            return AcApp.ShowModalDialog(MainWindow, form, false);
-        }
-
-        public static void ShowModelesForm(System.Windows.Forms.Form form)
-        {
-            form.ShowInTaskbar = false;
-            form.StartPosition = Windows.Forms.FormStartPosition.CenterParent;
-            AcApp.ShowModelessDialog(form);
-        }
-
         public static bool ShowModal(System.Windows.Window wnd)
         {
             wnd.ShowInTaskbar = false;
@@ -401,7 +375,7 @@ namespace System
             wnd.ResizeMode = Windows.ResizeMode.NoResize; // This hides window Minimize/Maximize buttons
 
 #if AutoCAD
-            AcApp.ShowModalWindow(null, wnd, false);
+            return AcApp.ShowModalWindow(null, wnd, false).GetValueOrDefault(false);
 #else
             return wnd.ShowDialog().GetValueOrDefault(false);
 #endif

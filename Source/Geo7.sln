@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Geo7.Shared", "Geo7.Shared\Geo7.Shared.shproj", "{C5B77044-DB60-4861-BAB6-9B5EA1E4E1A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geo7.AutoCAD", "Geo7.AutoCAD\Geo7.AutoCAD.csproj", "{E6D1502A-A0B6-4DE6-A875-CCB76C45E386}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geo7.ZwCAD", "Geo7.ZwCAD\Geo7.ZwCAD.csproj", "{4C0E14BC-F7FC-4AC1-93FB-A829D64C7342}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geo7.BricsCAD", "Geo7.App\Geo7.BricsCAD.csproj", "{290809C6-7644-43EF-9F48-EFD3FBEC3A5C}"
@@ -20,6 +18,8 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KSz.Shared.Core", "..\..\..\KSz.Shared\Source\KSz.Shared.Core\KSz.Shared.Core.shproj", "{47DB778C-DC35-4C48-8F0D-C0EDB164F8F9}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KSz.Shared.App.Native", "..\..\..\KSz.Shared\Source\KSz.Shared.App.Native\KSz.Shared.App.Native.shproj", "{2008A740-950E-45B5-8475-85A4A2A2123E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geo7.AutoCAD", "Geo7.App\Geo7.AutoCAD.csproj", "{E6D1502A-A0B6-4DE6-A875-CCB76C45E386}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -35,16 +35,13 @@ Global
 		..\..\..\KSz.Shared\Source\KSz.Shared.EGB\KSz.Shared.EGB.projitems*{90c02122-0e35-4068-b39f-86b3134eb703}*SharedItemsImports = 4
 		..\..\..\KSz.Shared\Source\KSz.Shared.IO\KSz.Shared.IO.projitems*{90c02122-0e35-4068-b39f-86b3134eb703}*SharedItemsImports = 4
 		Geo7.Shared\Geo7.Shared.projitems*{c5b77044-db60-4861-bab6-9b5ea1e4e1a9}*SharedItemsImports = 13
+		Geo7.Shared\Geo7.Shared.projitems*{e6d1502a-a0b6-4de6-a875-ccb76c45e386}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E6D1502A-A0B6-4DE6-A875-CCB76C45E386}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6D1502A-A0B6-4DE6-A875-CCB76C45E386}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6D1502A-A0B6-4DE6-A875-CCB76C45E386}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6D1502A-A0B6-4DE6-A875-CCB76C45E386}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4C0E14BC-F7FC-4AC1-93FB-A829D64C7342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4C0E14BC-F7FC-4AC1-93FB-A829D64C7342}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C0E14BC-F7FC-4AC1-93FB-A829D64C7342}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,6 +54,10 @@ Global
 		{90C02122-0E35-4068-B39F-86B3134EB703}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90C02122-0E35-4068-B39F-86B3134EB703}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90C02122-0E35-4068-B39F-86B3134EB703}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6D1502A-A0B6-4DE6-A875-CCB76C45E386}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6D1502A-A0B6-4DE6-A875-CCB76C45E386}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6D1502A-A0B6-4DE6-A875-CCB76C45E386}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6D1502A-A0B6-4DE6-A875-CCB76C45E386}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

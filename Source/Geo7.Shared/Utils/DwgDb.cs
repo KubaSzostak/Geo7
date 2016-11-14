@@ -41,7 +41,7 @@ namespace System
         public static List<string> GetBlockNames(string dwgFile, bool onlyBlocksWithAttributes)
         {
             using (var db = OpenReadonly(dwgFile))
-            using (var trans = db.StartAcTransaction())
+            using (var trans = db.StartAcTransaction(false))
             {
                 var blocks = trans.BlockDefs.AsEnumerable();
                 if (onlyBlocksWithAttributes)

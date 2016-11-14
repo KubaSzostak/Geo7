@@ -2,7 +2,7 @@
 ; http://www.jrsoftware.org/
 
 #define AppName "Geo7"
-#define AppVersion "v3.0.0-beta.6"
+#define AppVersion "v3.0.0-beta.7"
 
 #define AppPublisher "Kuba Szostak"
 #define AppURL "https://github.com/kubaszostak/Geo7/"

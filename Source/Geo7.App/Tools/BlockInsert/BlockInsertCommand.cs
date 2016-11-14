@@ -1,15 +1,10 @@
 ﻿
 
-using Bricscad.EditorInput;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Teigha.Geometry;
 
 namespace Geo7.Tools
 {
-	class BlockInsertCommand : AcCommand
+    class BlockInsertCommand : AcCommand
     {
 
 		public BlockInsertCommand(string blockName)
@@ -17,50 +12,50 @@ namespace Geo7.Tools
 			this.BlockName = blockName;
 		}
 
-		private string mBlockName;
+		private string _blockName;
 		public string BlockName {
-			get { return mBlockName; } 
+			get { return _blockName; } 
 			set
 			{
-				mBlockName = value;
+				_blockName = value;
 				LastBlockName = value;
-                using (var trans = Ac.StartTransaction())
+                using (var trans = Ac.StartTransaction(false))
                 {
 				    BlockScale = trans.GetSavedBlockScale(BlockName);
                 }
 			}
 		}
 
-		private double mBlockScale = 1.0;
+		private double _blockScale = 1.0;
 		public double BlockScale
 		{
 			get
 			{
-				return mBlockScale;
+				return _blockScale;
 			}
 			set
 			{
 				if (value <= 0.0)
-					mBlockScale = 1.0;
+					_blockScale = 1.0;
 				else
-					mBlockScale = value;
+					_blockScale = value;
 			}
 		}
 
 
 		private static string pointId = "1";
 
-		private static string mLastBlockName = "";
+		private static string _lastBlockName = "";
         public static string LastBlockName
 		{
 			get
 			{
-				return mLastBlockName;
+				return _lastBlockName;
 			}
 			set
 			{
 				if (!string.IsNullOrEmpty(value))
-					mLastBlockName = value;
+					_lastBlockName = value;
 			}
 		}
 
@@ -70,23 +65,30 @@ namespace Geo7.Tools
 			InitBlockName();
 			do
 			{
-				PromptPointResult ptRes = Ac.Editor.GetPoint("\r\n" + AppServices.Strings.EnterInsertionPoint);
-				if (ptRes.Status != PromptStatus.OK)
+				var ptRes = Ac.Editor.GetPoint("\r\n" + AppServices.Strings.EnterInsertionPoint);
+				if (!ptRes.IsOK())
 					return;
-				Point3d insPnt = ptRes.Value;
 
-				PromptStringOptions idOpt = new PromptStringOptions("\r\n" + AppServices.Strings.EnterPointId);
-				idOpt.DefaultValue = pointId;
-				idOpt.UseDefaultValue = true;
-				idOpt.AllowSpaces = false;
+				var insPnt = ptRes.Value;
 
+                var idOpt = Ac.Editor.GetPromptStringOptions("r\n" + AppServices.Strings.EnterPointId, pointId, false, true);
 				var idRes = Ac.Editor.GetString(idOpt);
-				if (idRes.Status != PromptStatus.OK)
+				if (!idRes.IsOK())
 					return;
+
 				pointId = idRes.StringResult;
 
-				InsertBlock(insPnt, pointId);
-				pointId = pointId.NextPointId();
+                using (var trans = Ac.StartTransaction(true))
+                {
+                    var blockDef = trans.GetBlockDef(BlockName);
+                    var blockRef = blockDef.AddBlockRef(insPnt, trans);
+                    blockRef.Scale = this.BlockScale;
+                    blockRef.SetIdAttribute(pointId);
+
+                    trans.Commit();
+                }
+
+                pointId = pointId.NextPointId();
 
 			} while (true);
 
@@ -98,13 +100,9 @@ namespace Geo7.Tools
 			if (!string.IsNullOrEmpty(BlockName))
 				return;
 
-			PromptStringOptions bnOpt = new PromptStringOptions("\r\n" + AppServices.Strings.EnterBlockName );
-			bnOpt.DefaultValue = LastBlockName;
-			bnOpt.UseDefaultValue = true;
-			bnOpt.AllowSpaces = false;
-
+			var bnOpt = Ac.Editor.GetPromptStringOptions("\r\n" + AppServices.Strings.EnterBlockName, LastBlockName, false, true);
 			var bnRes = Ac.Editor.GetString(bnOpt);
-			if (bnRes.Status != PromptStatus.OK)
+            if (!bnRes.IsOK())
 				return;
 
 			var blockName = bnRes.StringResult;
@@ -116,26 +114,7 @@ namespace Geo7.Tools
 
             AcDwgDb.ImportMissedBlockDef(blockName, Geo7App.Geo7Dwg);
 			this.BlockName = blockName;
-		}
-
-
-		private void InsertBlock(Point3d insPnt, string pointId)
-        {
-            using (var docLock = Ac.Doc.LockDocument())
-            {
-                using (var trans = Ac.StartTransaction())
-                {
-                    var blockDef = trans.GetBlockDef(BlockName);
-                    var blockRef = blockDef.AddBlockRef(insPnt, trans);
-                    blockRef.Scale = this.BlockScale;
-                    if (blockRef.IdAttribute != null)
-                        blockRef.IdAttribute.TextString = pointId;
-
-                    trans.Commit();
-                }
-            }
-		}
-        
+		}        
 
     }
 	

@@ -52,18 +52,15 @@ namespace Geo7.Tools
 
 		private bool GetBaseLine()
 		{
-			PromptPointResult ptRes = Ac.Editor.GetPoint("\r\n" + AppServices.Strings.EnterStartPoint);
-			if (ptRes.Status != PromptStatus.OK)
+			var ptRes = Ac.Editor.GetPoint("\r\n" + AppServices.Strings.EnterStartPoint);
+			if (!ptRes.IsOK())
 				return false;
 
 			var startPt = ptRes.Value;
 
-			PromptPointOptions epPrtOpts = new PromptPointOptions("\r\n" + AppServices.Strings.EnterEndPoint);
-			epPrtOpts.UseBasePoint = true;
-			epPrtOpts.UseDashedLine = true;
-			epPrtOpts.BasePoint = startPt;
+			var epPrtOpts = Ac.Editor.GetPromptPointOptions("\r\n" + AppServices.Strings.EnterEndPoint, startPt, true);
 			ptRes = Ac.Editor.GetPoint(epPrtOpts);
-			if (ptRes.Status != PromptStatus.OK)
+			if (!ptRes.IsOK())
 				return false;
 
 			var endPt = ptRes.Value;

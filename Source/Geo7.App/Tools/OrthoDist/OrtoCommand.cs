@@ -4,10 +4,6 @@ using System.Linq;
 using System.Text;
 
 
-
-//[assembly: CommandClass(typeof(Geo7.AutoCAD.Commands.PromptsTest))]
-//[assembly: CommandClass(typeof(Geo7.AutoCAD.Commands.TestEntityJig))]
-
 namespace Geo7.Tools
 {
     public class OrtoCommand : AcCommand

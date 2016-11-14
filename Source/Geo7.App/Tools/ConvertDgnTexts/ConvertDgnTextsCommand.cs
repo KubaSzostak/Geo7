@@ -1,24 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 
-#if AutoCAD
-using Autodesk.AutoCAD.Runtime;
-using Autodesk.AutoCAD.DatabaseServices;
-using Autodesk.AutoCAD.Geometry;
-using Autodesk.AutoCAD.ApplicationServices;
-using Autodesk.AutoCAD.EditorInput;
-#endif
-
-#if BricsCAD
-using Teigha.Runtime;
-using Teigha.DatabaseServices;
-using Teigha.Geometry;
-using Bricscad.ApplicationServices;
-using Bricscad.EditorInput;
-#endif
 
 namespace Geo7.Tools
 {
@@ -35,7 +18,7 @@ namespace Geo7.Tools
         {
             using (var trans = Ac.StartTransaction())
             {
-                var txtEnts = trans.GetAllEntities<DBText>();
+                var txtEnts = trans.GetAllDBText();
                 Ac.InitProgress(AppServices.Strings.ProcessingData, txtEnts.Count());
                 int txtChanged = 0;
                 foreach (var tEnt in txtEnts)

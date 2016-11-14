@@ -79,6 +79,7 @@ namespace System
             //Create the block reference...
             var blockRef = new BlockReference(pos, this.ObjectId);
             blockRef.SetDatabaseDefaults(); // Default/Active layer, color, ...
+            trans.AddEntity(blockRef); // Do it before blockRef.AttributeCollection.AppendAttribute(attRef);
 
             var attrRefs = new List<AttributeReference>();
             foreach (var attrDef in this.Attributes)
@@ -87,14 +88,17 @@ namespace System
                 var attDefObj = attrDef.GetAcObject(trans); // trans.GetObject<AttributeDefinition>(attrDef.ObjectId); //  attrDef.AcObject; 
                 var attRef = new AttributeReference();
                 attRef.SetAttributeFromBlock(attDefObj, blockRef.BlockTransform);
-                attRef.TextString = attDefObj.TextString;
+                attRef.SetDatabaseDefaults();
 
-                blockRef.AttributeCollection.AppendAttribute(attRef);
-                trans.AddNewlyCreatedDBObject(attRef, true);
-                
+                if (!attDefObj.Constant)
+                {
+                    attRef.TextString = attDefObj.TextString;
+                }
+
+                blockRef.AttributeCollection.AppendAttribute(attRef);  
+                trans.AddNewlyCreatedDBObject(attRef, true);              
                 attrRefs.Add(attRef);
             }
-            trans.AddEntity(blockRef);
             
             return new AcBlockRef(blockRef, trans, attrRefs);
         }
@@ -213,6 +217,12 @@ namespace System
         public AcAttributeRef IdAttribute { get; private set; }
         public AcAttributeRef HeightAttribute { get; private set; }
         public AcAttributeRef CodeAttribute { get; private set; }
+
+        public void SetIdAttribute(string text)
+        {
+            if (IdAttribute != null)
+                IdAttribute.TextString = text;
+        }
 
         private Point3d _position;
         public Point3d Position

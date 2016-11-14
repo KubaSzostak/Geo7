@@ -23,7 +23,7 @@
                         Command="{Binding FindNextCommand}"
                         DockPanel.Dock="Right">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="../../Icons/find-next.png" />
+                        <Image Source="../../Resources/find-next.png" />
                     </StackPanel>
                 </Button>
                 <Button ToolTip="Find blocks with attributes containing text"
@@ -32,7 +32,7 @@
                         Command="{Binding FindCommand}"
                         DockPanel.Dock="Right">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="../../Icons/find.png" />
+                        <Image Source="../../Resources/find.png" />
                         <TextBox Margin="3,0,0,0" Background="Transparent" Text="Find" />
                     </StackPanel>
                 </Button>

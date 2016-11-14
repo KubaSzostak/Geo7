@@ -1,14 +1,6 @@
 ﻿using Geo7.Tools;
-using System.IO;
 using System.Threading;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Media;
-using System.Windows.Forms.Integration;
-using System.Windows;
-using System.ComponentModel;
-using System.Drawing.Imaging;
 using System.Globalization;
 using System.Linq;
 
@@ -20,8 +12,6 @@ using Autodesk.AutoCAD.Colors;
 using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.Windows;
 using Autodesk.AutoCAD.EditorInput;
-
-using AcApp = Autodesk.AutoCAD.ApplicationServices.Application;
 #endif
 
 #if BricsCAD
@@ -32,8 +22,6 @@ using Teigha.Colors;
 using Bricscad.ApplicationServices;
 using Bricscad.Windows;
 using Bricscad.EditorInput;
-
-using AcApp = Bricscad.ApplicationServices.Application;
 #endif
 
 
@@ -285,22 +273,6 @@ namespace Geo7
         [CommandMethod("G7BugTest", CommandFlags.Modal)]
 		public static void BugTest()
 		{
-			var doc = AcApp.DocumentManager.MdiActiveDocument;
-			using (Transaction tr = doc.Database.TransactionManager.StartTransaction())
-			{
-				Point3d pos = new Point3d(33, 44, 0);
-				var txt = new DBText();
-				txt.TextString = pos.ToString();
-				txt.Position = pos;
-				txt.AlignmentPoint = pos;
-				txt.Justify = AttachmentPoint.MiddleRight;
-
-				BlockTableRecord btr = (BlockTableRecord)tr.GetObject(doc.Database.CurrentSpaceId, OpenMode.ForWrite);
-				btr.AppendEntity(txt);
-                
-				tr.AddNewlyCreatedDBObject(txt, true);
-				tr.Commit();
-			}
 		}
 
 

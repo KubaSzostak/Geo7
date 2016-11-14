@@ -31,23 +31,168 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AcCoreMgd">
+      <HintPath>..\..\..\Lib\Arx2013\AcCoreMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="AcDbMgd">
       <HintPath>..\..\..\Lib\Arx2013\AcDbMgd.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="AcMgd">
       <HintPath>..\..\..\Lib\Arx2013\AcMgd.dll</HintPath>
+      <Private>False</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Geo7App.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\BlockExpText\BlockExpTextCommand.cs" />
+    <Compile Include="Tools\BlockExpText\BlockExpTextPresenter.cs" />
+    <Compile Include="Tools\BlockExpText\BlockExpTextWindow.xaml.cs">
+      <DependentUpon>BlockExpTextWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\BlockFind\BlockFindCommand.cs" />
+    <Compile Include="Tools\BlockFind\BlockFindPage.xaml.cs">
+      <DependentUpon>BlockFindPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\BlockFind\BlockFindPresenter.cs" />
+    <Compile Include="Tools\BlockImpText\BlockImpTextCommand.cs" />
+    <Compile Include="Tools\BlockImpText\BlockImpTextPresenter.cs" />
+    <Compile Include="Tools\BlockImpText\BlockImpTextWindow.xaml.cs">
+      <DependentUpon>BlockImpTextWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\BlockInsert\BlockInsertCommand.cs" />
+    <Compile Include="Tools\BlockSelect\BlockSelectPresenter.cs" />
+    <Compile Include="Tools\BlockSelect\BlockSelectWindow.xaml.cs">
+      <DependentUpon>BlockSelectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\BlockSettigns\BlockSettingsCommand.cs" />
+    <Compile Include="Tools\BlockSettigns\BlockSettingsPresenter.cs" />
+    <Compile Include="Tools\BlockSettigns\BlockSettingsWindow.xaml.cs">
+      <DependentUpon>BlockSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\ConvertDgnTexts\ConvertDgnTextsCommand.cs" />
+    <Compile Include="Tools\OrthoDist\OrthoDistCommand.cs" />
+    <Compile Include="Tools\OrthoDist\OrtoCommand.cs" />
+    <Compile Include="Tools\PtsLnDist\PtsLnDistCommand.cs" />
+    <Compile Include="Tools\Slope\SlopeCommand.cs" />
+    <Compile Include="Tools\TextExpText\ExportTextsCommand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cui\Benchmark.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cui\ControlPoint.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cui\ConvertDgnTxt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cui\CrossPoint.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cui\ElevationPoint.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cui\ExportTxt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cui\FixedPoint.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cui\MarkPoint.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cui\MeasuredPoint.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cui\OrthoDist.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cui\Orto.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cui\Slope.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cui\SquarePoint.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cui\Geo7.cui">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="dwg\Geo7.dwg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\comment_add.png" />
+    <Resource Include="Resources\ConvertDgnTxt.png" />
+    <Resource Include="Resources\delete-objects.png" />
+    <Resource Include="Resources\delete.png" />
+    <Resource Include="Resources\deselect-all.png" />
+    <Resource Include="Resources\Export.png" />
+    <Resource Include="Resources\ExportTxt.png" />
+    <Resource Include="Resources\find-next.png" />
+    <Resource Include="Resources\find-prev.png" />
+    <Resource Include="Resources\find-text.png" />
+    <Resource Include="Resources\find.png" />
+    <Resource Include="Resources\Import.png" />
+    <Resource Include="Resources\information.png" />
+    <Resource Include="Resources\key.png" />
+    <Resource Include="Resources\Orto.png" />
+    <Resource Include="Resources\quick-select.png" />
+    <Resource Include="Resources\select-all.png" />
+    <Resource Include="Resources\select-object.png" />
+    <Resource Include="Resources\select-rect.png" />
+    <Resource Include="Resources\Slope.png" />
+    <Resource Include="Resources\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Tools\BlockExpText\BlockExpTextWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tools\BlockFind\BlockFindPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tools\BlockImpText\BlockImpTextWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tools\BlockSelect\BlockSelectWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tools\BlockSettigns\BlockSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\KSz.Shared\Source\KSz.App.WPF\KSz.App.Wpf.csproj">
+      <Project>{90c02122-0e35-4068-b39f-86b3134eb703}</Project>
+      <Name>KSz.App.Wpf</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\Geo7.Shared\Geo7.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

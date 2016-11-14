@@ -25,9 +25,11 @@ namespace System
     
     public class AcTransaction : AcDisposable
     {
-        public AcTransaction(Database db)
+        public AcTransaction(Database db, bool lockDocument)
         {
             this.Db = db;
+            if (lockDocument)
+                DocLock = Ac.Doc.LockDocument();
             this.Transaction = db.TransactionManager.StartTransaction();
 
 
@@ -44,6 +46,7 @@ namespace System
         }
 
         public Database Db { get; private set; }
+        private readonly DocumentLock DocLock = null;
         public Transaction Transaction { get; private set; }
 
 		public BlockTable BlockTable { get; private set; }
@@ -78,7 +81,10 @@ namespace System
             DisposeTransactionObjects();
             this.Transaction.Dispose();
             GC.SuppressFinalize(this.Transaction);
-            this.Transaction = null;       
+            this.Transaction = null;
+
+            if (DocLock != null)
+                DocLock.Dispose();
         }
 
 		public void Commit()
@@ -205,9 +211,9 @@ namespace System
     public static class AcTransactionEx
 	{
 
-		public static AcTransaction StartAcTransaction(this Database db)
+		public static AcTransaction StartAcTransaction(this Database db, bool lockDocument)
 		{
-			return new AcTransaction(db);
+			return new AcTransaction(db, lockDocument);
 		}
 
 
@@ -329,6 +335,11 @@ namespace System
                 }
             }
             return res;
+        }
+
+        public static IEnumerable<DBText> GetAllDBText(this AcTransaction trans)
+        {
+            return trans.GetAllEntities<DBText>();
         }
 
         public static ObjectId AddEntity(this AcTransaction trans, Entity ent)
