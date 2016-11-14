@@ -157,8 +157,8 @@ namespace System
             this.Name = entity.Name;
             this.BlockDef = trans.GetBlockDef(this.Name);
             this.HasAttributes = this.BlockDef.HasAttributes;
-            mPosition = entity.Position;
-            mScale = entity.ScaleFactors.X;
+            _position = entity.Position;
+            _scale = entity.ScaleFactors.X;
         }
 
 
@@ -214,14 +214,14 @@ namespace System
         public AcAttributeRef HeightAttribute { get; private set; }
         public AcAttributeRef CodeAttribute { get; private set; }
 
-        private Point3d mPosition;
+        private Point3d _position;
         public Point3d Position
         {
-            get { return mPosition; }
+            get { return _position; }
             set
             {
                 this.AcObject.Position = value;
-                mPosition = value;
+                _position = value;
             }
         }
 
@@ -230,10 +230,10 @@ namespace System
             this.AcObject.ResetBlock();
         }
         
-        private double mScale;
+        private double _scale;
         public double Scale
         {
-            get { return mScale; }
+            get { return _scale; }
             set
             {
 
@@ -245,7 +245,7 @@ namespace System
                 double scaleFactor = value / this.AcObject.ScaleFactors.X;
                 var scalingMtx = (Matrix3d.Scaling(scaleFactor, Position));
                 this.AcObject.TransformBy(scalingMtx); // It scales block and attributes
-                mScale = value;
+                _scale = value;
 
                 // After TransformBy() all attributes have IsWriteEnabled == true;
                 foreach (var attr in this.Attributes)

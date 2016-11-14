@@ -92,21 +92,21 @@ namespace System
         public AcEntity(TEntity entity, AcTransaction trans)
             : base(entity, trans)
         {
-            mLayer = entity.Layer;
+            _layer = entity.Layer;
             this.Displayed = trans.IsDisplayed(entity);
         }
 
-        private string mLayer;
+        private string _layer;
         public string Layer
         {
             get
             {
-                return mLayer;
+                return _layer;
             }
             set
             {
                 this.AcObject.Layer = value;
-                mLayer = value;
+                _layer = value;
             }
         }
 

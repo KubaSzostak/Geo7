@@ -29,38 +29,40 @@ namespace System
         public AcAttributeDef(AcBlockDef owner, AttributeDefinition entity, AcTransaction trans)
             : base(entity, trans)
         {
-            mTag = entity.Tag;
-            mInvisible = entity.Invisible;
-            this.AttrVisiblePresenter = !mInvisible;
+            _tag = entity.Tag;
+            _invisible = entity.Invisible;
+            this.AttrVisiblePresenter = !_invisible;
             Owner = owner;
         }
 
         public AcBlockDef Owner { get; private set; }
 
-        private string mTag;
+        private string _tag;
         public string Tag
         {
-            get { return mTag; }
+            get { return _tag; }
             set
             {
                 this.AcObject.Tag = value;
-                mTag = value;
+                _tag = value;
             }
         }
 
-        private bool mInvisible;
+        private bool _invisible;
         public bool Invisible
         {
-            get { return mInvisible; }
+            get { return _invisible; }
             set
             {
                 this.AcObject.Invisible = value;
-                mInvisible = value;
+                _invisible = value;
                 this.AttrVisiblePresenter = !value;
             }
         }
 
-        // For editing only
+        /// <summary>
+        /// Use it for binding to controls only
+        /// </summary>
         public bool AttrVisiblePresenter { get; set; }
 
         public override string ToString()
@@ -76,31 +78,31 @@ namespace System
         public AcAttributeRef(AcBlockRef owner, AttributeReference entity, AcTransaction trans)
             : base(entity, trans)
         {
-            mTag = entity.Tag;
-            mInvisible = entity.Invisible;
+            _tag = entity.Tag;
+            _invisible = entity.Invisible;
             Owner = owner;
         }
 
         public AcBlockRef Owner { get; private set; }
 
-        private string mTag;
+        private string _tag;
         public string Tag
         {
-            get { return mTag; }
+            get { return _tag; }
             set {
                 this.AcObject.Tag = value;
-                mTag = value;
+                _tag = value;
             }
         }
 
-        private bool mInvisible;
+        private bool _invisible;
         public bool Invisible
         {
-            get { return mInvisible; }
+            get { return _invisible; }
             set
             {
                 this.AcObject.Invisible = value;
-                mInvisible = value;
+                _invisible = value;
             }
         }
 
