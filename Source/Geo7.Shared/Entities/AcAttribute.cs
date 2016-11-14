@@ -26,14 +26,16 @@ namespace System
 
     public class AcAttributeDef : AcText<AttributeDefinition>
     {
-        public AcAttributeDef(AttributeDefinition entity, AcTransaction trans)
+        public AcAttributeDef(AcBlockDef owner, AttributeDefinition entity, AcTransaction trans)
             : base(entity, trans)
         {
             mTag = entity.Tag;
             mInvisible = entity.Invisible;
             this.AttrVisiblePresenter = !mInvisible;
-
+            Owner = owner;
         }
+
+        public AcBlockDef Owner { get; private set; }
 
         private string mTag;
         public string Tag
@@ -60,18 +62,27 @@ namespace System
 
         // For editing only
         public bool AttrVisiblePresenter { get; set; }
+
+        public override string ToString()
+        {
+            return Owner.Name + "." + Tag;
+        }
     }
     
 
 
     public class AcAttributeRef : AcText<AttributeReference>
     {
-        public AcAttributeRef(AttributeReference entity, AcTransaction trans)
+        public AcAttributeRef(AcBlockRef owner, AttributeReference entity, AcTransaction trans)
             : base(entity, trans)
         {
             mTag = entity.Tag;
             mInvisible = entity.Invisible;
+            Owner = owner;
         }
+
+        public AcBlockRef Owner { get; private set; }
+
         private string mTag;
         public string Tag
         {
@@ -93,6 +104,10 @@ namespace System
             }
         }
 
+        public override string ToString()
+        {
+            return Owner.Name + "." + Tag;
+        }
     }
 
 

@@ -119,9 +119,10 @@ namespace System
             foreach (ObjectId id in this.AcObject)
             {
                 var blockSubEntity = trans.GetObject<DBObject>(id);
-                if (blockSubEntity is AttributeDefinition)
-                {
-                    var attr = new AcAttributeDef(blockSubEntity as AttributeDefinition, trans);
+                var blockAttrDef = blockSubEntity as AttributeDefinition;
+                if ((blockAttrDef != null) && !string.IsNullOrEmpty(blockAttrDef.Tag))
+                {                    
+                    var attr = new AcAttributeDef(this, blockAttrDef, trans);
                     attrDict.Add(attr);
                     if (firstAttr == null)
                         firstAttr = attr.Tag;
@@ -166,7 +167,7 @@ namespace System
         {
             foreach (var attr in attributes)
             {
-                attrDict.Add(new AcAttributeRef(attr, trans));
+                attrDict.Add(new AcAttributeRef(this, attr, trans));
             }
             InitAttributes();
         }
@@ -178,7 +179,7 @@ namespace System
             foreach (ObjectId attrId in entity.AttributeCollection)
             {
                 var attr = trans.GetObject<AttributeReference>(attrId);
-                attrDict.Add(new AcAttributeRef(attr, trans));
+                attrDict.Add(new AcAttributeRef(this, attr, trans));
             }
             InitAttributes();
         }
