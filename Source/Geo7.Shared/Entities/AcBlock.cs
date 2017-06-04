@@ -126,10 +126,19 @@ namespace System
                 var blockAttrDef = blockSubEntity as AttributeDefinition;
                 if ((blockAttrDef != null) && !string.IsNullOrEmpty(blockAttrDef.Tag))
                 {                    
-                    var attr = new AcAttributeDef(this, blockAttrDef, trans);
-                    attrDict.Add(attr);
-                    if (firstAttr == null)
-                        firstAttr = attr.Tag;
+                    if (attrDict.Find(blockAttrDef.Tag) != null)
+                    {
+                        AppServices.Log.Add(this.GetType().Name + "." + nameof(InitAttributeInfos) + "() Warning: ");
+                        AppServices.Log.Add("   Block " + this.Name + "." +blockAttrDef.Tag+" attribute already exists");
+                        //Ac.WriteLn("Geo7 warning: Block " + this.Name + "." + blockAttrDef.Tag + " attribute already exists");
+                    }
+                    else
+                    {
+                        var attr = new AcAttributeDef(this, blockAttrDef, trans);
+                        attrDict.Add(attr);
+                        if (firstAttr == null)
+                            firstAttr = attr.Tag;
+                    }
                 }
                 else
                 {

@@ -100,7 +100,7 @@ namespace Geo7
         {
             AppServices.Log.NewSection();
             AppServices.Log.Add("Starting application: {0}, Version {1}...", Geo7App.AppName, Ac.AssemblyVersion.ToString());
-            AppServices.Log.Add("xCAD Version: " + Ac.Version);
+            AppServices.Log.Add("CAD App Version: " + Ac.Version);
             AppServices.Log.Add("Geo7 binary path: " + Ac.AssemblyPath);
             AppServices.Log.AddLn();
 
